@@ -1,0 +1,80 @@
+// buildscript {
+//     ext.kotlin_version = '1.9.0'
+//     repositories {
+//         google()
+//         mavenCentral()
+//         mavenLocal()
+//         maven { url "https://maven.zohodl.com/" }
+//     }
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:8.2.0'
+//         // classpath 'com.android.tools.build:gradle:7.2.0'
+//         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//         classpath 'com.google.gms:google-services:4.3.10'
+//     }
+// }
+// allprojects {
+//     repositories {
+//         google()
+//         mavenCentral()
+//         maven { url 'https://jitpack.io' }
+//         maven { url 'https://maven.aliyun.com/repository/public' }
+//         maven { url 'https://maven.zohodl.com/' }
+//         maven { url 'https://phonepe.mycloudrepo.io/public/repositories/phonepe-intentsdk-android' }
+//     }
+// }
+
+// rootProject.buildDir = '../build'
+// subprojects {
+//     project.buildDir = "${rootProject.buildDir}/${project.name}"
+// }
+// subprojects {
+//     project.evaluationDependsOn(':app')
+// }
+
+// tasks.register("clean", Delete) {
+//     delete rootProject.buildDir
+// }
+// configurations.all {
+//     resolutionStrategy {
+//         force 'androidx.core:core-ktx:1.6.0'
+//     }
+// }
+
+// // Commented-out duplicate section
+
+
+
+buildscript {
+    ext.kotlin_version = '1.9.0'
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+        maven { url "https://maven.zohodl.com/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.10'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.zohodl.com/' }
+        maven { url 'https://phonepe.mycloudrepo.io/public/repositories/phonepe-intentsdk-android' }
+    }
+}
+
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

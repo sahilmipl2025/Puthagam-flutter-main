@@ -1,0 +1,75 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-puthagam-puthagam-123643-authRole",
+      "UnauthRoleArn": "arn:aws:iam::507383414254:role/amplify-puthagam-puthagam-123643-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::507383414254:role/amplify-puthagam-puthagam-123643-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-puthagam-puthagam-123643-deployment",
+      "UnauthRoleName": "amplify-puthagam-puthagam-123643-unauthRole",
+      "StackName": "amplify-puthagam-puthagam-123643",
+      "StackId": "arn:aws:cloudformation:us-east-1:507383414254:stack/amplify-puthagam-puthagam-123643/b99c6130-6c8f-11ed-b8cb-0e86d659265d",
+      "AmplifyAppId": "dmuc90mvdvflw"
+    }
+  },
+  "auth": {
+    "puthagamf579ea90": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-puthagam-puthagam-123643-deployment/amplify-cfn-templates/auth/puthagamf579ea90-cloudformation-template.json",
+        "logicalId": "authputhagamf579ea90"
+      },
+      "lastPushTimeStamp": "2022-11-25T07:11:33.109Z",
+      "output": {
+        "UserPoolId": "us-east-1_BXogcnT1y",
+        "AppClientIDWeb": "2tk7gcscdch0srsrgdtkcrl8kk",
+        "AppClientID": "6omfg2t50qk8ghkk6n9op2ihio",
+        "IdentityPoolId": "us-east-1:891d3d0d-fe1a-44d4-a7bd-85a3c80e4d2d",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:507383414254:userpool/us-east-1_BXogcnT1y",
+        "IdentityPoolName": "puthagamf579ea90_identitypool_f579ea90__puthagam",
+        "UserPoolName": "puthagamf579ea90_userpool_f579ea90"
+      },
+      "lastPushDirHash": "WnbG2ZbH3ABchHMdiBOhsROam9g="
+    }
+  },
+  "analytics": {
+    "puthagam": {
+      "service": "Pinpoint",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-puthagam-puthagam-123643-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
+        "logicalId": "analyticsputhagam"
+      },
+      "lastPushTimeStamp": "2022-11-25T07:11:34.500Z",
+      "output": {
+        "appName": "puthagam-puthagam",
+        "Region": "us-east-1",
+        "Id": "f0968ee2139649e6a80e2ea7411d6147"
+      },
+      "lastPushDirHash": "+T8d5tBOV50RWcEJ7AZDW3FW6u0="
+    }
+  }
+}

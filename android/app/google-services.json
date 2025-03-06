@@ -1,0 +1,103 @@
+{
+  "project_info": {
+    "project_number": "660794496508",
+    "project_id": "puthagam-bc010",
+    "storage_bucket": "puthagam-bc010.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660794496508:android:42ea1697403ab53f2a4e79",
+        "android_client_info": {
+          "package_name": "com.app.puthagam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660794496508-5ovbjvu3pg1ir2iof1cjsj3adldogd8t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.puthagam",
+            "certificate_hash": "8843f5cb3567e7d39f406e1328a3b54e14f9a357"
+          }
+        },
+        {
+          "client_id": "660794496508-9t5ut2mciv5j6ttt262u04e5s25q61rn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.puthagam",
+            "certificate_hash": "9b3828507b14e0db8f105e14dfa0fdca7d6f91a6"
+          }
+        },
+        {
+          "client_id": "660794496508-fi3r9tnm6bip6g6qgbnkrbmktv7kfcrq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.puthagam",
+            "certificate_hash": "7a5453add1a3e5cb6542b8cccda4eff6779b436c"
+          }
+        },
+        {
+          "client_id": "660794496508-h3ptqhgo21njqh9dsdm0p8okfsiphsta.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.puthagam",
+            "certificate_hash": "143748e3df75fc823312c7def8a7f4fea5740940"
+          }
+        },
+        {
+          "client_id": "660794496508-pbjq82ogqujr3qe07cembktsnovhvs18.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.puthagam",
+            "certificate_hash": "de6c25085c4e5af74ea553aefe749e7279fb28f0"
+          }
+        },
+        {
+          "client_id": "660794496508-pqg7pg4uduhckvamlhalafhqr94e8ssd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.puthagam",
+            "certificate_hash": "445e56bc633ee0dfa12f48709aad0dcb95cf76e1"
+          }
+        },
+        {
+          "client_id": "660794496508-s6goh7t39v4dv9ghrg1spc8q5kphbu1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.puthagam",
+            "certificate_hash": "0b94b0166cdfb75238fe4622b91726ef63192753"
+          }
+        },
+        {
+          "client_id": "660794496508-34b4vhlhn99h69oovouldrsn4sbkhkav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXQ_CWmLC_DGqd4KNX9p8dkUp_MIbJvCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660794496508-34b4vhlhn99h69oovouldrsn4sbkhkav.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "660794496508-i5rfl3jsngd9j6r144mathuuobc4mjeh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.puthagam",
+                "app_store_id": "6444919423"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

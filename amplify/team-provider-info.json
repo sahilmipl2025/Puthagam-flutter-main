@@ -1,0 +1,44 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-puthagam-dev-144346-authRole",
+      "UnauthRoleArn": "arn:aws:iam::689818529461:role/amplify-puthagam-dev-144346-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::689818529461:role/amplify-puthagam-dev-144346-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-puthagam-dev-144346-deployment",
+      "UnauthRoleName": "amplify-puthagam-dev-144346-unauthRole",
+      "StackName": "amplify-puthagam-dev-144346",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:689818529461:stack/amplify-puthagam-dev-144346/87c41600-3d7b-11ed-84d5-0ac8cff062af",
+      "AmplifyAppId": "d2utcjfwz7rvaf"
+    },
+    "categories": {
+      "auth": {
+        "puthagamf579ea90": {}
+      },
+      "analytics": {
+        "puthagam": {}
+      }
+    }
+  },
+  "puthagam": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-puthagam-puthagam-123643-authRole",
+      "UnauthRoleArn": "arn:aws:iam::507383414254:role/amplify-puthagam-puthagam-123643-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::507383414254:role/amplify-puthagam-puthagam-123643-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-puthagam-puthagam-123643-deployment",
+      "UnauthRoleName": "amplify-puthagam-puthagam-123643-unauthRole",
+      "StackName": "amplify-puthagam-puthagam-123643",
+      "StackId": "arn:aws:cloudformation:us-east-1:507383414254:stack/amplify-puthagam-puthagam-123643/b99c6130-6c8f-11ed-b8cb-0e86d659265d",
+      "AmplifyAppId": "dmuc90mvdvflw"
+    },
+    "categories": {
+      "auth": {
+        "puthagamf579ea90": {}
+      },
+      "analytics": {
+        "puthagam": {}
+      }
+    }
+  }
+}

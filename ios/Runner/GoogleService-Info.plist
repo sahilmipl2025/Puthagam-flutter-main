@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>660794496508-t6f05n61fnknsj7auf9tr332b07ra1li.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.660794496508-t6f05n61fnknsj7auf9tr332b07ra1li</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>660794496508-6qdofc0lladgpjpd9999ujvc1kkh3v0g.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDiqWD91-LWPvbhMoU3DxCMqCzxjY6woOY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>660794496508</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.puthagam</string>
+	<key>PROJECT_ID</key>
+	<string>puthagam-bc010</string>
+	<key>STORAGE_BUCKET</key>
+	<string>puthagam-bc010.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:660794496508:ios:f6da513e91f6e4c72a4e79</string>
+</dict>
+</plist>

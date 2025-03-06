@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "C:\\Users\\MIPL\\.amplify\\awscloudformation\\q9n4wT1kMz"
+  },
+  "puthagam": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "C:\\Users\\MIPL\\.amplify\\awscloudformation\\JfPlWZ0z44"
+  }
+}

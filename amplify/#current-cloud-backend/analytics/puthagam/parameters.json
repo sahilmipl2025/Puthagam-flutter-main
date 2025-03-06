@@ -1,0 +1,21 @@
+{
+    "appName": "puthagam",
+    "roleName": "pinpointLambdaRolebd0a8e59",
+    "cloudformationPolicyName": "cloudformationPolicybd0a8e59",
+    "cloudWatchPolicyName": "cloudWatchPolicybd0a8e59",
+    "pinpointPolicyName": "pinpointPolicybd0a8e59",
+    "authPolicyName": "pinpoint_amplify_bd0a8e59",
+    "unauthPolicyName": "pinpoint_amplify_bd0a8e59",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
