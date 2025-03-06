@@ -5,7 +5,7 @@ import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_core/amplify_core.dart' as amplify_core;
 import 'package:audio_service/audio_service.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -296,22 +296,26 @@ Future<void> firebaseMessaging() async {
     debugPrint("getInitialMessage Called ");
     if (message != null) {
       await Firebase.initializeApp();
+      
       Future.delayed(const Duration(seconds: 3)).then((val) async {
         if (message.toString() != "null") {
+         
           if (message.data.toString() != "null") {
+           
             if (LocalStorage.userId.toString() != "null" && LocalStorage.userId.toString() != "") {
               if (message.data['notificationType'].toString() == "addPodcast") {
                 if (message.data['id'].toString() != "" && message.data['id'].toString() != "null") {
                   await Get.toNamed(AppRoutes.bookDetailScreen, arguments: message.data['id'].toString());
                   await Get.find<BookDetailController>().callApis(bookID: message.data['id'].toString());
                 }
-              } else if (message.data['notificationType'].toString() == "addBook") {
+              } 
+              else if (message.data['notificationType'].toString() == "addBook") {
                 if (message.data['id'].toString() != "" && message.data['id'].toString() != "null") {
                   await Get.toNamed(AppRoutes.bookDetailScreen, arguments: message.data['id'].toString());
                   await Get.find<BookDetailController>().callApis(bookID: message.data['id'].toString());
                 }
               }
-            }
+            } 
           }
         }
       });

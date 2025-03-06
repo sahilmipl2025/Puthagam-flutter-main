@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:puthagam/utils/network_info.dart';

@@ -59,7 +59,7 @@ basicStatusCheck() async {
         newVersion.showUpdateDialog(
           context: Get.context!,
           versionStatus: version,
-          launchMode: LaunchMode.externalApplication,
+       //   launchMode: LaunchMode.externalApplication,
           allowDismissal: allowDismissal,
           dialogText:
               'Please install the new version for improved functionality.',

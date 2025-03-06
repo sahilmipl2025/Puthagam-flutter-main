@@ -1,66 +1,65 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:record/record.dart';
-
 import '../controllers/live_controller.dart';
 
-class AudioRecorder extends StatefulWidget {
+class AudioRecorderWidget extends StatefulWidget {
   final void Function(String path) onStop;
 
-  const AudioRecorder({Key? key, required this.onStop}) : super(key: key);
+  const AudioRecorderWidget({Key? key, required this.onStop}) : super(key: key);
 
   @override
-  _AudioRecorderState createState() => _AudioRecorderState();
+  _AudioRecorderWidgetState createState() => _AudioRecorderWidgetState();
 }
 
-class _AudioRecorderState extends State<AudioRecorder> {
+class _AudioRecorderWidgetState extends State<AudioRecorderWidget> {
   int _recordDuration = 0;
   Timer? _timer;
-  final _audioRecorder = Record();
-  StreamSubscription<RecordState>? _recordSub;
+  final AudioRecorder _audioRecorder = AudioRecorder();
   RecordState _recordState = RecordState.stop;
-  StreamSubscription<Amplitude>? _amplitudeSub;
   Amplitude? _amplitude;
   final LiveController homeController = Get.find();
 
   @override
   void initState() {
-    _recordSub = _audioRecorder.onStateChanged().listen((recordState) {
-      setState(() => _recordState = recordState);
-    });
-
-    _amplitudeSub = _audioRecorder
-        .onAmplitudeChanged(const Duration(milliseconds: 300))
-        .listen((amp) => setState(() => _amplitude = amp));
-
     super.initState();
+    _startMonitoring();
   }
 
-  Future<void> _start() async {
-    try {
-      if (await _audioRecorder.hasPermission()) {
-        // We don't do anything with this but printing
-        homeController.startStreaming();
-        final isSupported = await _audioRecorder.isEncoderSupported(
-          AudioEncoder.aacLc,
-        );
-        log("is Supported $isSupported");
+  void _startMonitoring() {
+    _timer = Timer.periodic(const Duration(milliseconds: 300), (Timer t) async {
+      bool isRecording = await _audioRecorder.isRecording();
+      setState(() {
+        _recordState = isRecording ? RecordState.record : RecordState.stop;
+      });
 
-        // final devs = await _audioRecorder.listInputDevices();
-        // final isRecording = await _audioRecorder.isRecording();
+      _amplitude = await _audioRecorder.getAmplitude();
+    });
+  }
+Future<void> _start() async {
+  try {
+    if (await _audioRecorder.hasPermission()) {
+      homeController.startStreaming();
 
-        await _audioRecorder.start();
-        _recordDuration = 0;
+      // Define a valid file path
+      final String path = '/storage/emulated/0/Download/audio_${DateTime.now().millisecondsSinceEpoch}.m4a';
 
-        _startTimer();
-      }
-    } catch (e) {
-      log("e $e");
+      await _audioRecorder.start(
+        const RecordConfig(encoder: AudioEncoder.aacLc), // ✅ First argument
+        path: path, // ✅ Second argument
+      );
+
+      _recordDuration = 0;
+      _startTimer();
     }
+  } catch (e) {
+    log("Error starting recording: $e");
   }
+} 
+
+
 
   Future<void> _stop() async {
     homeController.stopStreaming();
@@ -86,21 +85,16 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _buildRecordStopControl(),
-                const SizedBox(width: 20),
-                _buildPauseResumeControl(),
-                const SizedBox(width: 20),
-                _buildText(),
-              ],
-            ),
+            _buildRecordStopControl(),
+            const SizedBox(height: 20),
+            _buildPauseResumeControl(),
+            const SizedBox(height: 20),
+            _buildText(),
             if (_amplitude != null) ...[
               const SizedBox(height: 40),
               Text('Current: ${_amplitude?.current ?? 0.0}'),
@@ -115,8 +109,6 @@ class _AudioRecorderState extends State<AudioRecorder> {
   @override
   void dispose() {
     _timer?.cancel();
-    _recordSub?.cancel();
-    _amplitudeSub?.cancel();
     _audioRecorder.dispose();
     super.dispose();
   }
@@ -196,17 +188,11 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   String _formatNumber(int number) {
-    String numberStr = number.toString();
-    if (number < 10) {
-      numberStr = '0' + numberStr;
-    }
-
-    return numberStr;
+    return number < 10 ? '0$number' : number.toString();
   }
 
   void _startTimer() {
     _timer?.cancel();
-
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       setState(() => _recordDuration++);
     });

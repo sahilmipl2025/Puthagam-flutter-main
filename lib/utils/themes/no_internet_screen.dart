@@ -1,10 +1,10 @@
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:puthagam/utils/colors.dart';
 
 checkConnection() async {
-  ConnectivityResult result = await Connectivity().checkConnectivity();
+  ConnectivityResult result = (await Connectivity().checkConnectivity()) as ConnectivityResult;
   return (result == ConnectivityResult.mobile ||
       result == ConnectivityResult.wifi);
 }

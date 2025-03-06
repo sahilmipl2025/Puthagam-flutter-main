@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:puthagam/data/api/profile/get_profile_api.dart';
 import 'package:puthagam/data/api/profile/get_users_purchase_list_api.dart';

@@ -1,4 +1,4 @@
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:puthagam/model/library/get_download_book_model.dart';
 import 'package:http/http.dart' as http;

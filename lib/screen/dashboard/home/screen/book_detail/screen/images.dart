@@ -14,7 +14,7 @@ class BooksImages extends StatelessWidget {
       body: Center(
         child: SizedBox(
           child: PinchZoom(
-            resetDuration: const Duration(milliseconds: 100),
+         //   resetDuration: const Duration(milliseconds: 100),
             maxScale: 5,
             onZoomStart: () {},
             onZoomEnd: () {},

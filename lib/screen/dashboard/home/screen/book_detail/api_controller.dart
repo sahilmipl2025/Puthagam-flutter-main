@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:connectivity/connectivity.dart';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 // import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
 import 'package:flutter/foundation.dart';
@@ -1069,7 +1070,7 @@ class BookDetailApiController extends GetxController {
 
   downloadBooks() async {
     try {
-      ConnectivityResult status = await Connectivity().checkConnectivity();
+      ConnectivityResult status = (await Connectivity().checkConnectivity()) as ConnectivityResult;
       if ((LocalStorage.downloadWithMobileData == true &&
               status == ConnectivityResult.wifi) ||
           status == ConnectivityResult.wifi) {

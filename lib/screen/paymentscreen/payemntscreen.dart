@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'dart:core';
 import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -195,7 +195,7 @@ void refreshTransactionId() {
             phonepeInit();
             print("phonepeforcheckurl${decoded['callBackUrl'].toString()}");
           //  ProgressDialogUtils.showProgressDialog();
-            startPGTransaction();
+          //  startPGTransaction();                             //sahil
            // ProgressDialogUtils.hideProgressDialog();
             //getUserProfileApi();
            //  print("printbodychecksum${startPGTransaction()}");
@@ -234,63 +234,63 @@ void refreshTransactionId() {
     });
   }
 
-  void startPGTransaction() async {
-    try {
-           ProgressDialogUtils.showProgressDialog();
-      Future<String?> string_signature =
-          PhonePePaymentSdk.getPackageSignatureForAndroid()
-              .then((value) => signaturvalue = value);
-      print("signaturevalue   ${signaturvalue.toString()}");
+  // void startPGTransaction() async {
+  //   try {
+  //          ProgressDialogUtils.showProgressDialog();
+  //     Future<String?> string_signature =
+  //         PhonePePaymentSdk.getPackageSignatureForAndroid()
+  //             .then((value) => signaturvalue = value);
+  //     print("signaturevalue   ${signaturvalue.toString()}");
 
-      var response = PhonePePaymentSdk.startPGTransaction(
-          body, receivedCallbackurl, checksum, {}, apiEndPoint, "");
-      response
-          .then((val) => {
-                setState(()  {
-                  print("response  ${response}");
-                  print("pgtransactionbody  ${body}");
-                  print("pgtransaction callbackurl    ${receivedCallbackurl}");
-                  print("pgtransaction  checksum      ${checksum}");
-                  print("pgtransaction apiendpoint  ${ apiEndPoint}");
+  //     var response = PhonePePaymentSdk.startPGTransaction(
+  //         body, receivedCallbackurl, checksum, {}, apiEndPoint, "");
+  //     response
+  //         .then((val) => {
+  //               setState(()  {
+  //                 print("response  ${response}");
+  //                 print("pgtransactionbody  ${body}");
+  //                 print("pgtransaction callbackurl    ${receivedCallbackurl}");
+  //                 print("pgtransaction  checksum      ${checksum}");
+  //                 print("pgtransaction apiendpoint  ${ apiEndPoint}");
                 
-                  //result = val;
-                  if (val != null) {
-                    String status = val['status'].toString();
-                    String error = val['error'].toString();
-                    if (status == 'SUCCESS') {
-                       print("pgtransaction999999${response}");
-                    // ProgressDialogUtils.hideProgressDialog();
-                        getUserProfileApi();
-                  Get.back();
-                   Get.back();
-                   ProgressDialogUtils.hideProgressDialog();
-                  print("gdhfvgfvgvgdhc${getUserProfileApi()}");
+  //                 //result = val;
+  //                 if (val != null) {
+  //                   String status = val['status'].toString();
+  //                   String error = val['error'].toString();
+  //                   if (status == 'SUCCESS') {
+  //                      print("pgtransaction999999${response}");
+  //                   // ProgressDialogUtils.hideProgressDialog();
+  //                       getUserProfileApi();
+  //                 Get.back();
+  //                  Get.back();
+  //                  ProgressDialogUtils.hideProgressDialog();
+  //                 print("gdhfvgfvgvgdhc${getUserProfileApi()}");
                       
-                        // sucess payment 
-                      print("pgtransactioN after api ${response}");
-                      result = "Flow complete - status: SUCCES";
-                      //checkStatus();
-                    } else {
-                      result =
-                          "Flow complete - status: $status and error$error";
-                      print("pgtransaction333333");
-                      ProgressDialogUtils.hideProgressDialog();
-                    }
-                  } else {
-                    ProgressDialogUtils.hideProgressDialog();
-                    result = "Flow Incomplete";
-                  }
-                })
-              })
-          .catchError((error) {
-        handleError(error);
-        return <dynamic>{};
-      });
-    } catch (error) {
-      ProgressDialogUtils.hideProgressDialog();
-      handleError(error);
-    }
-  }
+  //                       // sucess payment 
+  //                     print("pgtransactioN after api ${response}");
+  //                     result = "Flow complete - status: SUCCES";
+  //                     //checkStatus();
+  //                   } else {
+  //                     result =
+  //                         "Flow complete - status: $status and error$error";
+  //                     print("pgtransaction333333");
+  //                     ProgressDialogUtils.hideProgressDialog();
+  //                   }
+  //                 } else {
+  //                   ProgressDialogUtils.hideProgressDialog();
+  //                   result = "Flow Incomplete";
+  //                 }
+  //               })
+  //             })
+  //         .catchError((error) {
+  //       handleError(error);
+  //       return <dynamic>{};
+  //     });
+  //   } catch (error) {
+  //     ProgressDialogUtils.hideProgressDialog();
+  //     handleError(error);
+  //   }
+  // }
 
   
 
@@ -1313,7 +1313,7 @@ Future<Map<String, dynamic>> createSubscription(String customerId) async {
     else if (apps!.length == 0)
       return InkWell(
         onTap: () {
-          startPGTransaction();
+          // startPGTransaction();                        //sahil
         },
         child: Center(
           child: Container(
@@ -1343,7 +1343,7 @@ Future<Map<String, dynamic>> createSubscription(String customerId) async {
                   setState(() {
                     //  isSelectedPhonePe = true;
                     //  isSelectedRazorpay = false;
-                    startPGTransaction();
+                   // startPGTransaction();           // sahil
                   });
                 },
                 // ignore: sized_box_for_whitespace

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:puthagam/model/category/get_category_list_model.dart'
     as category;
 import 'dart:math';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;

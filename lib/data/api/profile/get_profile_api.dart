@@ -2,7 +2,7 @@
 // import 'dart:developer';
 // // import 'dart:ffi';
 // import 'dart:io';
-// import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity_plus/connectivity_plus.dart';
 // import 'package:get/get.dart';
 // import 'package:get_storage/get_storage.dart';
 // import 'package:http/http.dart' as http;
@@ -136,7 +136,7 @@ import 'dart:convert';
 import 'dart:developer';
 // Conditionally import dart:io only for native platforms
 import 'dart:io' if (dart.library.html) 'dart:html' as platform;
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;

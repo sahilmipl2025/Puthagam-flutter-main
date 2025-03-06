@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:audio_service/audio_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:connectivity/connectivity.dart';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
@@ -1410,92 +1411,60 @@ getUserProfileApi({bool? forBeta = false}) async {
                                     ],
                                   ),
                                   SizedBox(height: isTablet ? 16 : 12),
-                                  SwipeTo(
-                                    onRightSwipe: () async {
-                                      if (baseController!
-                                          .audioPlayer.hasPrevious) {
-                                        await baseController!.audioPlayer
-                                            .seekToPrevious();
-                                        baseController!.audioPlayer.play();
-
-                                        baseController!.isPlaying.value = true;
-
-                                        setState(() {});
-                                      }
-                                    },
-                                    animationDuration:
-                                        const Duration(milliseconds: 200),
-                                    onLeftSwipe: () {
-                                      if (baseController!.audioPlayer.hasNext) {
-                                        baseController!.isPlaying.value = false;
-                                        baseController!.audioPlayer
-                                            .seekToNext();
-
-                                        baseController!.isPlaying.value = true;
-                                        baseController!.audioPlayer.play();
-                                        setState(() {});
-                                      }
-                                    },
-                                    child: Obx(
-                                      () => baseController!
-                                                  .currentPlayingIndex.value !=
-                                              999
-                                          ? Html(
-                                              data: baseController
-                                                      ?.booksQueueList[
-                                                          baseController!
-                                                              .currentPlayingBookIndex
-                                                              .value]
-                                                      .bookChapter[baseController!
-                                                          .currentPlayingIndex
-                                                          .value]
-                                                      .content!
-                                                      .replaceAll(
-                                                          'font-feature-settings: normal;',
-                                                          '') ??
-                                                  "",
-                                              style: {
-                                                "body": Style(
-                                                  color: isDark.value
-                                                      ? Colors.white
-                                                      : Colors.black,
-                                                  fontSize: FontSize(
-                                                      customFontSize.value),
-                                                ),
-                                                "span": Style(
-                                                  color: isDark.value
-                                                      ? Colors.white
-                                                      : Colors.black,
-                                                  fontSize: FontSize(
-                                                      customFontSize.value),
-                                                ),
-                                                "div": Style(
-                                                  color: isDark.value
-                                                      ? Colors.white
-                                                      : Colors.black,
-                                                  fontSize: FontSize(
-                                                      customFontSize.value),
-                                                ),
-                                                "li": Style(
-                                                  color: isDark.value
-                                                      ? Colors.white
-                                                      : Colors.black,
-                                                  fontSize: FontSize(
-                                                      customFontSize.value),
-                                                ),
-                                                "font": Style(
-                                                  color: isDark.value
-                                                      ? Colors.white
-                                                      : Colors.black,
-                                                  fontSize: FontSize(
-                                                      customFontSize.value),
-                                                ),
-                                              },
-                                            )
-                                          : const SizedBox(),
-                                    ),
-                                  ),
-                                ],
+                              SwipeTo(
+  onRightSwipe: (DragUpdateDetails details) async {
+    if (baseController!.audioPlayer.hasPrevious) {
+      await baseController!.audioPlayer.seekToPrevious();
+      baseController!.audioPlayer.play();
+      baseController!.isPlaying.value = true;
+    }
+  },
+  animationDuration: const Duration(milliseconds: 200),
+  onLeftSwipe: (DragUpdateDetails details) {
+    if (baseController!.audioPlayer.hasNext) {
+      baseController!.isPlaying.value = false;
+      baseController!.audioPlayer.seekToNext();
+      baseController!.isPlaying.value = true;
+      baseController!.audioPlayer.play();
+    }
+  },
+  child: Obx(
+    () => baseController!.currentPlayingIndex.value != 999
+        ? Html(
+            data: baseController
+                    ?.booksQueueList[
+                        baseController!.currentPlayingBookIndex.value]
+                    .bookChapter[baseController!.currentPlayingIndex.value]
+                    .content!
+                    .replaceAll('font-feature-settings: normal;', '') ??
+                "",
+            style: {
+              "body": Style(
+                color: isDark.value ? Colors.white : Colors.black,
+                fontSize: FontSize(customFontSize.value),
+              ),
+              "span": Style(
+                color: isDark.value ? Colors.white : Colors.black,
+                fontSize: FontSize(customFontSize.value),
+              ),
+              "div": Style(
+                color: isDark.value ? Colors.white : Colors.black,
+                fontSize: FontSize(customFontSize.value),
+              ),
+              "li": Style(
+                color: isDark.value ? Colors.white : Colors.black,
+                fontSize: FontSize(customFontSize.value),
+              ),
+              "font": Style(
+                color: isDark.value ? Colors.white : Colors.black,
+                fontSize: FontSize(customFontSize.value),
+              ),
+            },
+          )
+        : const SizedBox(),
+  ),
+),
+  ],
                               ),
                             ),
                           ),
@@ -1986,84 +1955,44 @@ getUserProfileApi({bool? forBeta = false}) async {
                                                     ],
                                                   ),
                                                   const SizedBox(height: 12),
-                                                  SwipeTo(
-                                                    onRightSwipe: () async {
-                                                      if (baseController!
-                                                          .audioPlayer
-                                                          .hasPrevious) {
-                                                        await baseController!
-                                                            .audioPlayer
-                                                            .seekToPrevious();
-
-                                                        baseController!
-                                                            .audioPlayer
-                                                            .play();
-                                                        baseController!
-                                                            .isPlaying
-                                                            .value = true;
-
-                                                        setState(() {});
-                                                      }
-                                                    },
-                                                    animationDuration:
-                                                        const Duration(
-                                                            milliseconds: 200),
-                                                    onLeftSwipe: () {
-                                                      if (baseController!
-                                                          .audioPlayer
-                                                          .hasNext) {
-                                                        baseController!
-                                                            .isPlaying
-                                                            .value = false;
-                                                        baseController!
-                                                            .audioPlayer
-                                                            .seekToNext();
-
-                                                        baseController!
-                                                            .isPlaying
-                                                            .value = true;
-                                                        baseController!
-                                                            .audioPlayer
-                                                            .play();
-                                                        setState(() {});
-                                                      }
-                                                    },
-                                                    child: Obx(
-                                                      () => baseController!
-                                                                  .currentPlayingIndex
-                                                                  .value !=
-                                                              999
-                                                          ? Html(
-                                                              data: baseController
-                                                                      ?.booksQueueList[baseController!
-                                                                          .currentPlayingBookIndex
-                                                                          .value]
-                                                                      .bookChapter[baseController!
-                                                                          .currentPlayingIndex
-                                                                          .value]
-                                                                      .content!
-                                                                      .replaceAll(
-                                                                          'font-feature-settings: normal;',
-                                                                          '') ??
-                                                                  "",
-                                                              style: {
-                                                                "body": Style(
-                                                                  color: isDark
-                                                                          .value
-                                                                      ? Colors
-                                                                          .white
-                                                                      : Colors
-                                                                          .black,
-                                                                  fontSize: FontSize(
-                                                                      customFontSize
-                                                                          .value),
-                                                                ),
-                                                              },
-                                                            )
-                                                          : const SizedBox(),
-                                                    ),
-                                                  ),
-                                                ],
+                                          SwipeTo(
+  onRightSwipe: (DragUpdateDetails details) async {
+    if (baseController!.audioPlayer.hasPrevious) {
+      await baseController!.audioPlayer.seekToPrevious();
+      baseController!.audioPlayer.play();
+      baseController!.isPlaying.value = true;
+    }
+  },
+  animationDuration: const Duration(milliseconds: 200),
+  onLeftSwipe: (DragUpdateDetails details) {
+    if (baseController!.audioPlayer.hasNext) {
+      baseController!.isPlaying.value = false;
+      baseController!.audioPlayer.seekToNext();
+      baseController!.isPlaying.value = true;
+      baseController!.audioPlayer.play();
+    }
+  },
+  child: Obx(
+    () => baseController!.currentPlayingIndex.value != 999
+        ? Html(
+            data: baseController
+                    ?.booksQueueList[
+                        baseController!.currentPlayingBookIndex.value]
+                    .bookChapter[baseController!.currentPlayingIndex.value]
+                    .content!
+                    .replaceAll('font-feature-settings: normal;', '') ??
+                "",
+            style: {
+              "body": Style(
+                color: isDark.value ? Colors.white : Colors.black,
+                fontSize: FontSize(customFontSize.value),
+              ),
+            },
+          )
+        : const SizedBox(),
+  ),
+),
+      ],
                                               )
                                             : const SizedBox(),
                                         isVisible.value

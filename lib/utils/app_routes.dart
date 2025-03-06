@@ -87,7 +87,7 @@ class AppRoutes {
 
   static List<GetPage> pages = [
   //  GetPage(name: stripeScreen, page: () =>stripeScreen()),
-    GetPage(name: paymentPage, page: () => PaymentPage()),
+    //GetPage(name: paymentPage, page: () => PaymentPage()),
      GetPage(name: otpScreen, page: () => OtpScreen()),
     GetPage(name: splashScreen, page: () => SplashScreen()),
     GetPage(name: introScreen, page: () => IntroScreen()),

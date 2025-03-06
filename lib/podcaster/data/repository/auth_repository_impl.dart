@@ -23,7 +23,7 @@ class AuthRepositoryImpl extends IAuthRepositroy {
           error: httpResponse.response.statusMessage,
           response: httpResponse.response,
           requestOptions: httpResponse.response.requestOptions,
-          type: DioErrorType.response,
+          type: DioErrorType.badResponse,
         ),
       );
     } on DioError catch (e) {

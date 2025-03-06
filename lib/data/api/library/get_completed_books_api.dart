@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:puthagam/data/handler/api_handler.dart';
 import 'package:puthagam/model/category_books/get_category_books_model.dart';

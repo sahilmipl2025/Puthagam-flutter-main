@@ -59,7 +59,7 @@ class SignUpController extends GetxController {
       final result = await Amplify.Auth.signUp(
         username: emailController.value.text.trim(),
         password: passwordController.value.text,
-        options: CognitoSignUpOptions(userAttributes: userAttributes),
+      //  options: CognitoSignUpOptions(userAttributes: userAttributes),
       );
       Get.back();
       Get.snackbar("Success", "OTP has been sent to your email id",

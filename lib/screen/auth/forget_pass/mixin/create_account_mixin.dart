@@ -36,7 +36,7 @@ mixin CreateAccountMixin {
         await Amplify.Auth.signUp(
           username: email.trim(),
           password: password,
-          options: CognitoSignUpOptions(userAttributes: userAttributes),
+         // options: CognitoSignUpOptions(userAttributes: userAttributes),
         );
       }
       signup = amplifyException is UserNotFoundException;

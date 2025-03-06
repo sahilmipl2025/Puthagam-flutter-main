@@ -1,10 +1,10 @@
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 /// For checking internet connectivity
 abstract class NetworkInfoI {
   Future<bool> isConnected();
-  Future<ConnectivityResult> get connectivityResult;
-  Stream<ConnectivityResult> get onConnectivityChanged;
+  Future<List<ConnectivityResult>> get connectivityResult;
+  Stream<List<ConnectivityResult>> get onConnectivityChanged;
 }
 
 class NetworkInfo implements NetworkInfoI {
@@ -14,21 +14,18 @@ class NetworkInfo implements NetworkInfoI {
   /// Check whether internet is connected or not.
   @override
   Future<bool> isConnected() async {
-    final result = await connectivity.checkConnectivity();
-    if (result != ConnectivityResult.none) {
-      return true;
-    }
-    return false;
+    final results = await connectivity.checkConnectivity();
+    return results.any((result) => result != ConnectivityResult.none);
   }
 
-  /// To check type of internet connectivity
+  /// Get the current connectivity status
   @override
-  Future<ConnectivityResult> get connectivityResult async {
+  Future<List<ConnectivityResult>> get connectivityResult async {
     return connectivity.checkConnectivity();
   }
 
-  /// Check the type on internet connection on changed of internet connection
+  /// Stream of connectivity changes
   @override
-  Stream<ConnectivityResult> get onConnectivityChanged =>
+  Stream<List<ConnectivityResult>> get onConnectivityChanged =>
       connectivity.onConnectivityChanged;
 }

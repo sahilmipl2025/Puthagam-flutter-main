@@ -1,5 +1,5 @@
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:puthagam/data/api/auth/signout_api.dart';

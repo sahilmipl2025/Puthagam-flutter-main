@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services'
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+} else {
+    throw GradleException("local.properties not found. Create it with 'sdk.dir' and 'flutter.sdk'.")
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw GradleException("flutter.sdk not set in local.properties. Set it to your Flutter SDK path (e.g., C:/flutter).")
+}
+
+android {
+    namespace 'com.app.puthagam'
+    compileSdk 34
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    defaultConfig {
+        applicationId "com.app.puthagam"
+        minSdk 24
+        targetSdk 34
+        versionCode localProperties.getProperty('flutter.versionCode')?.toInteger() ?: 81
+        versionName localProperties.getProperty('flutter.versionName') ?: "2.1.41"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'upload'
+            keyPassword '12345678'
+            storeFile file('upload-keystore.jks')
+            storePassword '12345678'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0"
+    implementation platform('com.google.firebase:firebase-bom:33.3.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging:23.0.7'
+    implementation 'com.android.billingclient:billing:6.0.1'
+}

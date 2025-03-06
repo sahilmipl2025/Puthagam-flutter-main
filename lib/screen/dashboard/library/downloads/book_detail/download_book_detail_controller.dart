@@ -517,56 +517,40 @@ class DownloadBookDetailController extends GetxController {
                                     ],
                                   ),
                                   const SizedBox(height: 12),
-                                  SwipeTo(
-                                    onRightSwipe: () async {
-                                      if (baseController!
-                                          .audioPlayer.hasPrevious) {
-                                        await baseController!.audioPlayer
-                                            .seekToPrevious();
-                                        baseController!.audioPlayer.play();
+                                SwipeTo(
+  onRightSwipe: (DragUpdateDetails details) async {
+    if (baseController!.audioPlayer.hasPrevious) {
+      await baseController!.audioPlayer.seekToPrevious();
+      baseController!.audioPlayer.play();
+      baseController!.isPlaying.value = true;
+    }
+  },
+  animationDuration: const Duration(milliseconds: 200),
+  onLeftSwipe: (DragUpdateDetails details) {
+    if (baseController!.audioPlayer.hasNext) {
+      baseController!.isPlaying.value = false;
+      baseController!.audioPlayer.seekToNext();
+      baseController!.isPlaying.value = true;
+      baseController!.audioPlayer.play();
+    }
+  },
+  child: Obx(
+    () => baseController!.currentPlayingIndex.value != 999
+        ? Html(
+            data: jsonDecode(data.value['chapter'])
+                    [baseController!.currentPlayingIndex.value]['content'] ??
+                "",
+            style: {
+              "body": Style(
+                color: isDark.value ? Colors.white : Colors.black,
+                fontSize: FontSize(customFontSize.value),
+              ),
+            },
+          )
+        : const SizedBox(),
+  ),
+),
 
-                                        baseController!.isPlaying.value = true;
-
-                                        setState(() {});
-                                      }
-                                    },
-                                    animationDuration:
-                                        const Duration(milliseconds: 200),
-                                    onLeftSwipe: () {
-                                      if (baseController!.audioPlayer.hasNext) {
-                                        baseController!.isPlaying.value = false;
-                                        baseController!.audioPlayer
-                                            .seekToNext();
-
-                                        baseController!.isPlaying.value = true;
-                                        baseController!.audioPlayer.play();
-                                        setState(() {});
-                                      }
-                                    },
-                                    child: Obx(
-                                      () => baseController!
-                                                  .currentPlayingIndex.value !=
-                                              999
-                                          ? Html(
-                                              data: jsonDecode(data
-                                                          .value['chapter'])[
-                                                      baseController!
-                                                          .currentPlayingIndex
-                                                          .value]['content'] ??
-                                                  "",
-                                              style: {
-                                                "body": Style(
-                                                  color: isDark.value
-                                                      ? Colors.white
-                                                      : Colors.black,
-                                                  fontSize: FontSize(
-                                                      customFontSize.value),
-                                                ),
-                                              },
-                                            )
-                                          : const SizedBox(),
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),

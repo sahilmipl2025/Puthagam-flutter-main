@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:puthagam/model/meet_creator/get_meet_creator_modal.dart';
 import 'package:http/http.dart' as http;

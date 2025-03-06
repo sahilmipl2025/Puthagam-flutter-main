@@ -2579,7 +2579,6 @@ class BookDetailScreen extends StatelessWidget {
                   BooksImages(bookImage: con.bookDetail.value.image ?? ""));
             },
             child: PinchZoom(
-              resetDuration: const Duration(milliseconds: 100),
               maxScale: 5,
               onZoomStart: () {},
               onZoomEnd: () {},
